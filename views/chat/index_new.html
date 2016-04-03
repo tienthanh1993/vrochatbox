@@ -1,0 +1,149 @@
+<head>
+
+<link href="/static/css/fix.css" rel="stylesheet">
+<script src="/static/js/jquery-1.12.0.min.js"></script>
+
+</head>
+<div class="ui">
+    <div class="left-menu">
+        <!--<form action="#" class="search">-->
+            <!--<input placeholder="search..." type="search" name="" id="">-->
+            <!--<input type="submit" value="&#xf002;">-->
+        <!--</form>-->
+
+        <menu id="list-chanel" class="list-friends">
+            {{if .User.Id}}
+            <li >
+                <img width="50" height="50" src="{{.User.Avatar}}">
+                <div class="info">
+                    <div class="user"><span id="showme">{{.User.DisplayName}}</span></div>
+                    <div id="profile" style="display: none;" class="status on">
+                        <a style="color:white" href="/changedisplayname">change name</a> <br/>
+                        <a style="color:white" href="/changepassword">change password</a></br/>
+                        <a style="color:white" href="/logout"> logout</a>
+                    </div>
+                </div>
+            </li>
+            {{else}}
+            <li >
+                <img width="50" height="50" src="/static/img/avatar.png">
+                <div class="info">
+                    <div class="user"><span><a href="/login" style="color:white">Click here to login</a></span></div>
+                </div>
+            </li>
+            {{end}}
+            {{$conversations := .conversation}}
+            {{range $key,$value := $conversations}}
+            <li style="cursor: crosshair" onclick="fetchConversation(this,{{$key}});">
+                <img width="50" height="50" src="/static/img/avatar.png">
+                <div class="info">
+                    <div class="user">{{$value.Name}}</div>
+                    <div class="status on"> online</div>
+                </div>
+            </li>
+            {{end}}
+            {{$users := .users}}
+            {{range $key,$value := $users}}
+            <script>
+                $(document).ready(function(){
+                    userlist.push({{$key.ClientId}});
+                });
+            </script>
+            <li id="client-{{$key.ClientId}}" style="cursor: crosshair" onclick="privateChat({{$key.UserId}});">
+                <img width="50" height="50" src="{{$key.Avatar}}">
+                <div class="info">
+                    <div class="user">{{$key.UserName}}</div>
+                    <div class="status on"> online</div>
+                </div>
+            </li>
+            {{end}}
+        </menu>
+    </div>
+    <div class="chat">
+        <!--<div class="top">-->
+            <!--<div class="avatar">-->
+                <!--<img width="50" height="50" src="http://cs625730.vk.me/v625730358/1126a/qEjM1AnybRA.jpg">-->
+            <!--</div>-->
+            <!--<div class="info">-->
+                <!--<div class="name">Юния Гапонович</div>-->
+                <!--<div class="count">already 1 902 messages</div>-->
+            <!--</div>-->
+            <!--<i class="fa fa-star"></i>-->
+        <!--</div>-->
+        <div><a href="#" onclick="loadMore()">Load More</a> </div>
+        <ul class="messages">
+
+        </ul>
+        <div class="write-form">
+            <div id="colorCodesContainer" style="display: block; margin: 0px 5%;" dir="ltr"><a href="javascript:setFontColor('gray');" style="background-color:gray;" title="gray"></a>
+                <a href="javascript:setFontColor('silver');" style="background-color:silver;" title="silver"></a>
+                <a href="javascript:setFontColor('white');" style="background-color:white;" title="white"></a>
+                <a href="javascript:setFontColor('yellow');" style="background-color:yellow;" title="yellow"></a>
+                <a href="javascript:setFontColor('orange');" style="background-color:orange;" title="orange"></a>
+                <a href="javascript:setFontColor('red');" style="background-color:red;" title="red"></a>
+                <a href="javascript:setFontColor('fuchsia');" style="background-color:fuchsia;" title="fuchsia"></a>
+                <a href="javascript:setFontColor('purple');" style="background-color:purple;" title="purple"></a>
+                <a href="javascript:setFontColor('navy');" style="background-color:navy;" title="navy"></a>
+                <a href="javascript:setFontColor('blue');" style="background-color:blue;" title="blue"></a>
+                <a href="javascript:setFontColor('aqua');" style="background-color:aqua;" title="aqua"></a>
+                <a href="javascript:setFontColor('teal');" style="background-color:teal;" title="teal"></a>
+                <a href="javascript:setFontColor('green');" style="background-color:green;" title="green"></a>
+                <a href="javascript:setFontColor('lime');" style="background-color:lime;" title="lime"></a>
+                <a href="javascript:setFontColor('olive');" style="background-color:olive;" title="olive"></a>
+                <a href="javascript:setFontColor('maroon');" style="background-color:maroon;" title="maroon"></a>
+                <a href="javascript:setFontColor('black');" style="background-color:black;" title="black"></a>
+            </div>
+            <textarea placeholder="Type your message" name="e" id="texxt"  rows="2"></textarea>
+
+            <i onclick="bb('img')" class="fa fa-picture-o"></i>
+            <i onclick="bb('url')" class="fa fa-external-link"></i>
+            <i onclick="bb('code')" class="fa fa-align-justify"></i>
+            <span class="send">Send</span>
+        </div>
+    </div>
+</div>
+
+<script src="/static/js/fix.js"></script>
+<script>
+    if (typeof userlist =='undefined') {
+        userlist = [];
+    }
+    var socket;
+    var user = {{.User}};
+    var conversation = {{.conversation}};
+    var conversationIdx = 0;
+    var lastMsg = {};
+    var curPage = 0;
+
+
+    socket = new WebSocket('ws://' + window.location.host + '/ws/join?uname=123123');
+    $(window).bind('beforeunload',function(){
+        socket.close();
+    });
+    socket.onmessage = function (event) {
+        var data = JSON.parse(event.data);
+        switch (data.Type) {
+            case 0: // JOIN
+                joinMessage(data);
+                break;
+            case 1: // LEAVE
+                leaveMessage(data);
+                break;
+            case 2: // MESSAGE
+                receiveMessage(data,true);
+                break;
+            case 3: // EVENT_DELETE_MESSAGE
+                deleteMessage(data);
+                break;
+        }
+    }
+
+    socket.onerror = function(sk) {
+        alert('server error');
+    }
+
+    this.dom = {};
+    this.dom['inputField'] = document.getElementById("texxt");
+    fetchConversation(null,0);
+
+</script>

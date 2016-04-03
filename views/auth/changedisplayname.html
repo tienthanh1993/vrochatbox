@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html >
+<head>
+    <meta charset="UTF-8">
+    <title>Change Display Name</title>
+
+
+    <link href="/static/css/fix.css" rel="stylesheet">
+
+
+</head>
+
+<body>
+
+<div class="login">
+    <h1>Change Name</h1>
+    <p style="color:white;">{{.Error}}</p>
+    <form method="post" action="/changedisplayname">
+        <input type="text" id="displayname" name="displayname" required="required" placeholder="Display Name" value="{{ .User.DisplayName }}">
+        <input type="text" id="avatar" name="avatar" required="required" placeholder="Avatar" value="{{ .User.Avatar  }}">
+        <button type="submit" class="btn btn-primary btn-block btn-large">Update</button>
+    </form>
+</div>
+
+
+
+
+
+
+</body>
+</html>

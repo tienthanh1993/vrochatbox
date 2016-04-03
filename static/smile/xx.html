@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<product productid="yahoo_messenger_emoticons" active="1">
+    <title>Laivt VBB Yahoo! New Messenger Emoticons</title>
+    <description>New Yahoo Messenger Emoticons for Vbulletin v1.0 / Developed by SinhVienIT.Net</description>
+    <version>1.0</version>
+    <url>http://sinhvienit.net</url>
+    <versioncheckurl>http://sinhvienit.net</versioncheckurl>
+    <dependencies>
+    </dependencies>
+    <codes>
+        <code version="">
+            <installcode><![CDATA[
+
+                $iGet=$db->query_first("
+                SELECT MAX(imagecategoryid) AS iMax
+                FROM " . TABLE_PREFIX . "imagecategory
+                ");
+                $iMax=$iGet[iMax];
+                $sGet=$db->query_first("
+                SELECT MAX(smilieid) AS sMax
+                FROM " . TABLE_PREFIX . "smilie
+                ");
+                $sMax=$sGet[sMax];
+                $install=array();
+                $iMax++;
+                $install[]="INSERT INTO `" . TABLE_PREFIX . "imagecategory` VALUES ($iMax,'Yahoo Messenger Emoticons','3','2')";
+                $sMax++;
+                $install[]="DELETE FROM `" . TABLE_PREFIX . "smilie` WHERE smilietext='" . $db->escape_string(':D') . "'";
+                $install[]="DELETE FROM `" . TABLE_PREFIX . "smilie` WHERE smilietext='" . $db->escape_string(':)') . "'";
+                $install[]="DELETE FROM `" . TABLE_PREFIX . "smilie` WHERE smilietext='" . $db->escape_string(';)') . "'";
+                $install[]="DELETE FROM `" . TABLE_PREFIX . "smilie` WHERE smilietext='" . $db->escape_string(':p') . "'";
+                $install[]="DELETE FROM `" . TABLE_PREFIX . "smilie` WHERE smilietext='" . $db->escape_string(':(') . "'";
+                $install[]="INSERT INTO `" . TABLE_PREFIX . "smilie` VALUES ('" . sMax . "','happy',':)','static/smile/1.gif','" . $iMax . "','1')";$sMax++;
+                $install[]="INSERT INTO `" . TABLE_PREFIX . "smilie` VALUES ('" . $sMax . "', 'sad', '" . $db->escape_string(':(') . "', 'static/smile/2.gif','" . $iMax . "', '1')";$sMax++;
+                $install[]="INSERT INTO `" . TABLE_PREFIX . "smilie` VALUES ('" . $sMax . "', 'winking', '" . $db->escape_string(';)') . "', 'static/smile/3.gif','" . $iMax . "', '1')";$sMax++;
+                $install[]="INSERT INTO `" . TABLE_PREFIX . "smilie` VALUES ('" . $sMax . "', 'big green', '" . $db->escape_string(':D') . "', 'static/smile/4.gif','" . $iMax . "', '1')";$sMax++;
+                $install[]="INSERT INTO `" . TABLE_PREFIX . "smilie` VALUES ('" . $sMax . "', 'batting eyelashes', '" . $db->escape_string(';;)') . "', 'static/smile/5.gif','" . $iMax . "', '1')";$sMax++;
+                $install[]="INSERT INTO `" . TABLE_PREFIX . "smilie` VALUES ('" . $sMax . "', 'big hug', '" . $db->escape_string('>:D<') . "', 'static/smile/6.gif','" . $iMax . "', '1')";$sMax++;
+                $install[]="INSERT INTO `" . TABLE_PREFIX . "smilie` VALUES ('" . $sMax . "', 'confused', '" . $db->escape_string(':-/') . "', 'static/smile/7.gif','" . $iMax . "', '1')";$sMax++;
+                $install[]="INSERT INTO `" . TABLE_PREFIX . "smilie` VALUES ('" . $sMax . "', 'love struck', '" . $db->escape_string(':x') . "', 'static/smile/8.gif','" . $iMax . "', '1')";$sMax++;
+
+                $install[]="INSERT INTO `" . TABLE_PREFIX . "smilie` VALUES ('" . $sMax . "', 'blushing', '" . $db->escape_string(':">') . "', 'static/smile/9.gif','" . $iMax . "', '1')";$sMax++;
+                $install[]="INSERT INTO `" . TABLE_PREFIX . "smilie` VALUES ('" . $sMax . "', 'tongue', '" . $db->escape_string(':P') . "', 'static/smile/10.gif','" . $iMax . "', '1')";$sMax++;
+                $install[]="INSERT INTO `" . TABLE_PREFIX . "smilie` VALUES ('" . $sMax . "', 'kiss', '" . $db->escape_string(':-*') . "', 'static/smile/11.gif','" . $iMax . "', '1')";$sMax++;
+                $install[]="INSERT INTO `" . TABLE_PREFIX . "smilie` VALUES ('" . $sMax . "', 'broken heart', '" . $db->escape_string('=((') . "', 'static/smile/12.gif','" . $iMax . "', '1')";$sMax++;
+                $install[]="INSERT INTO `" . TABLE_PREFIX . "smilie` VALUES ('" . $sMax . "', 'surprise', '" . $db->escape_string(':-o') . "', 'static/smile/13.gif','" . $iMax . "', '1')";$sMax++;
+                $install[]="INSERT INTO `" . TABLE_PREFIX . "smilie` VALUES ('" . $sMax . "', 'angry', '" . $db->escape_string('x-(') . "', 'static/smile/14.gif','" . $iMax . "', '1')";$sMax++;
+                $install[]="INSERT INTO `" . TABLE_PREFIX . "smilie` VALUES ('" . $sMax . "', 'smug', '" . $db->escape_string(':>') . "', 'static/smile/15.gif','" . $iMax . "', '1')";$sMax++;
+
+                $install[]="INSERT INTO `" . TABLE_PREFIX . "smilie` VALUES ('" . $sMax . "', 'cool', '" . $db->escape_string('b-)') . "', 'static/smile/16.gif','" . $iMax . "', '1')";$sMax++;
+                $install[]="INSERT INTO `" . TABLE_PREFIX . "smilie` VALUES ('" . $sMax . "', 'worried', '" . $db->escape_string(':-s') . "', 'static/smile/17.gif','" . $iMax . "', '1')";$sMax++;
+                $install[]="INSERT INTO `" . TABLE_PREFIX . "smilie` VALUES ('" . $sMax . "', 'whew!', '" . $db->escape_string('#:-s') . "', 'static/smile/18.gif','" . $iMax . "', '1')";$sMax++;
+                $install[]="INSERT INTO `" . TABLE_PREFIX . "smilie` VALUES ('" . $sMax . "', 'devil', '" . $db->escape_string('>:)') . "', 'static/smile/19.gif','" . $iMax . "', '1')";$sMax++;
+                $install[]="INSERT INTO `" . TABLE_PREFIX . "smilie` VALUES ('" . $sMax . "', 'crying', '" . $db->escape_string(':((') . "', 'static/smile/20.gif','" . $iMax . "', '1')";$sMax++;
+                $install[]="INSERT INTO `" . TABLE_PREFIX . "smilie` VALUES ('" . $sMax . "', 'laughing', '" . $db->escape_string(':))') . "', 'static/smile/21.gif','" . $iMax . "', '1')";$sMax++;
+                $install[]="INSERT INTO `" . TABLE_PREFIX . "smilie` VALUES ('" . $sMax . "', 'straight face', '" . $db->escape_string(':|') . "', 'static/smile/22.gif','" . $iMax . "', '1')";$sMax++;
+                $install[]="INSERT INTO `" . TABLE_PREFIX . "smilie` VALUES ('" . $sMax . "', 'raise eyebrow', '" . $db->escape_string('/:)') . "', 'static/smile/23.gif','" . $iMax . "', '1')";$sMax++;
+                $install[]="INSERT INTO `" . TABLE_PREFIX . "smilie` VALUES ('" . $sMax . "', 'rolling on the floor', '" . $db->escape_string('=))') . "', 'static/smile/24.gif','" . $iMax . "', '1')";$sMax++;
+                $install[]="INSERT INTO `" . TABLE_PREFIX . "smilie` VALUES ('" . $sMax . "', 'angel', '" . $db->escape_string('o:-)') . "', 'static/smile/25.gif','" . $iMax . "', '1')";$sMax++;
+                $install[]="INSERT INTO `" . TABLE_PREFIX . "smilie` VALUES ('" . $sMax . "', 'nerd', '" . $db->escape_string(':-B') . "', 'static/smile/26.gif','" . $iMax . "', '1')";$sMax++;
+
+                $install[]="INSERT INTO `" . TABLE_PREFIX . "smilie` VALUES ('" . $sMax . "', 'talk to hand', '" . $db->escape_string('=;') . "', 'static/smile/27.gif','" . $iMax . "', '1')";$sMax++;
+                $install[]="INSERT INTO `" . TABLE_PREFIX . "smilie` VALUES ('" . $sMax . "', 'sleepy', '" . $db->escape_string('|-)') . "', 'static/smile/28.gif','" . $iMax . "', '1')";$sMax++;
+                $install[]="INSERT INTO `" . TABLE_PREFIX . "smilie` VALUES ('" . $sMax . "', 'rolling eyes', '" . $db->escape_string('8-|') . "', 'static/smile/29.gif','" . $iMax . "', '1')";$sMax++;
+                $install[]="INSERT INTO `" . TABLE_PREFIX . "smilie` VALUES ('" . $sMax . "', 'loser', '" . $db->escape_string('L-)') . "', 'static/smile/30.gif','" . $iMax . "', '1')";$sMax++;
+                $install[]="INSERT INTO `" . TABLE_PREFIX . "smilie` VALUES ('" . $sMax . "', 'sick', '" . $db->escape_string(':-&') . "', 'static/smile/31.gif','" . $iMax . "', '1')";$sMax++;
+                $install[]="INSERT INTO `" . TABLE_PREFIX . "smilie` VALUES ('" . $sMax . "', 'don''t tel anyone', '" . $db->escape_string(':-$') . "', 'static/smile/32.gif','" . $iMax . "', '1')";$sMax++;
+                $install[]="INSERT INTO `" . TABLE_PREFIX . "smilie` VALUES ('" . $sMax . "', 'not talking', '" . $db->escape_string('[-(') . "', 'static/smile/33.gif','" . $iMax . "', '1')";$sMax++;
+                $install[]="INSERT INTO `" . TABLE_PREFIX . "smilie` VALUES ('" . $sMax . "', 'clown', '" . $db->escape_string(':o)') . "', 'static/smile/34.gif','" . $iMax . "', '1')";$sMax++;
+                $install[]="INSERT INTO `" . TABLE_PREFIX . "smilie` VALUES ('" . $sMax . "', 'silly', '" . $db->escape_string('8-}') . "', 'static/smile/35.gif','" . $iMax . "', '1')";$sMax++;
+                $install[]="INSERT INTO `" . TABLE_PREFIX . "smilie` VALUES ('" . $sMax . "', 'party', '" . $db->escape_string('<:-P') . "', 'static/smile/36.gif','" . $iMax . "', '1')";$sMax++;
+                $install[]="INSERT INTO `" . TABLE_PREFIX . "smilie` VALUES ('" . $sMax . "', 'yawn', '" . $db->escape_string('(:|') . "', 'static/smile/37.gif','" . $iMax . "', '1')";$sMax++;
+                $install[]="INSERT INTO `" . TABLE_PREFIX . "smilie` VALUES ('" . $sMax . "', 'drooling', '" . $db->escape_string('=P~') . "', 'static/smile/38.gif','" . $iMax . "', '1')";$sMax++;
+                $install[]="INSERT INTO `" . TABLE_PREFIX . "smilie` VALUES ('" . $sMax . "', 'thinking', '" . $db->escape_string(':-?') . "', 'static/smile/39.gif','" . $iMax . "', '1')";$sMax++;
+                $install[]="INSERT INTO `" . TABLE_PREFIX . "smilie` VALUES ('" . $sMax . "', 'd''oh', '" . $db->escape_string('#-o') . "', 'static/smile/40.gif','" . $iMax . "', '1')";$sMax++;
+                $install[]="INSERT INTO `" . TABLE_PREFIX . "smilie` VALUES ('" . $sMax . "', 'applause', '" . $db->escape_string('=D>') . "', 'static/smile/41.gif','" . $iMax . "', '1')";$sMax++;
+                $install[]="INSERT INTO `" . TABLE_PREFIX . "smilie` VALUES ('" . $sMax . "', 'nailbiting', '" . $db->escape_string(':-ss') . "', 'static/smile/42.gif','" . $iMax . "', '1')";$sMax++;
+                $install[]="INSERT INTO `" . TABLE_PREFIX . "smilie` VALUES ('" . $sMax . "', 'hypnotized', '" . $db->escape_string('@-)') . "', 'static/smile/43.gif','" . $iMax . "', '1')";$sMax++;
+                $install[]="INSERT INTO `" . TABLE_PREFIX . "smilie` VALUES ('" . $sMax . "', 'liar', '" . $db->escape_string(':^o') . "', 'static/smile/44.gif','" . $iMax . "', '1')";$sMax++;
+                $install[]="INSERT INTO `" . TABLE_PREFIX . "smilie` VALUES ('" . $sMax . "', 'waiting', '" . $db->escape_string(':-w') . "', 'static/smile/45.gif','" . $iMax . "', '1')";$sMax++;
+                $install[]="INSERT INTO `" . TABLE_PREFIX . "smilie` VALUES ('" . $sMax . "', 'sigh', '" . $db->escape_string(':-<') . "', 'static/smile/46.gif','" . $iMax . "', '1')";$sMax++;
+                $install[]="INSERT INTO `" . TABLE_PREFIX . "smilie` VALUES ('" . $sMax . "', 'phbbbbt', '" . $db->escape_string('>:P') . "', 'static/smile/47.gif','" . $iMax . "', '1')";$sMax++;
+                $install[]="INSERT INTO `" . TABLE_PREFIX . "smilie` VALUES ('" . $sMax . "', 'cowboy', '" . $db->escape_string('<):)') . "', 'static/smile/48.gif','" . $iMax . "', '1')";$sMax++;
+                $install[]="INSERT INTO `" . TABLE_PREFIX . "smilie` VALUES ('" . $sMax . "', 'pig', '" . $db->escape_string(':@)') . "', 'static/smile/49.gif','" . $iMax . "', '1')";$sMax++;
+                $install[]="INSERT INTO `" . TABLE_PREFIX . "smilie` VALUES ('" . $sMax . "', 'cow', '" . $db->escape_string('3:-O') . "', 'static/smile/50.gif','" . $iMax . "', '1')";$sMax++;
+                $install[]="INSERT INTO `" . TABLE_PREFIX . "smilie` VALUES ('" . $sMax . "', 'monkey', '" . $db->escape_string(':(|)') . "', 'static/smile/51.gif','" . $iMax . "', '1')";$sMax++;
+
+                $install[]="INSERT INTO `" . TABLE_PREFIX . "smilie` VALUES ('" . $sMax . "', 'chicken', '" . $db->escape_string('~:>') . "', 'static/smile/52.gif','" . $iMax . "', '1')";$sMax++;
+                $install[]="INSERT INTO `" . TABLE_PREFIX . "smilie` VALUES ('" . $sMax . "', 'rose', '" . $db->escape_string('@};-') . "', 'static/smile/53.gif','" . $iMax . "', '1')";$sMax++;
+                $install[]="INSERT INTO `" . TABLE_PREFIX . "smilie` VALUES ('" . $sMax . "', 'good luck', '" . $db->escape_string('%%-') . "', 'static/smile/54.gif','" . $iMax . "', '1')";$sMax++;
+                $install[]="INSERT INTO `" . TABLE_PREFIX . "smilie` VALUES ('" . $sMax . "', 'flag', '" . $db->escape_string('**==') . "', 'static/smile/55.gif','" . $iMax . "', '1')";$sMax++;
+                $install[]="INSERT INTO `" . TABLE_PREFIX . "smilie` VALUES ('" . $sMax . "', 'pumpkin', '" . $db->escape_string('(~~)') . "', 'static/smile/56.gif','" . $iMax . "', '1')";$sMax++;
+                $install[]="INSERT INTO `" . TABLE_PREFIX . "smilie` VALUES ('" . $sMax . "', 'coffee', '" . $db->escape_string('~o)') . "', 'static/smile/57.gif','" . $iMax . "', '1')";$sMax++;
+                $install[]="INSERT INTO `" . TABLE_PREFIX . "smilie` VALUES ('" . $sMax . "', 'idea', '" . $db->escape_string('*-:)') . "', 'static/smile/58.gif','" . $iMax . "', '1')";$sMax++;
+                $install[]="INSERT INTO `" . TABLE_PREFIX . "smilie` VALUES ('" . $sMax . "', 'skull', '" . $db->escape_string('8-x') . "', 'static/smile/59.gif','" . $iMax . "', '1')";$sMax++;
+                $install[]="INSERT INTO `" . TABLE_PREFIX . "smilie` VALUES ('" . $sMax . "', 'bug', '" . $db->escape_string('=:)') . "', 'static/smile/60.gif','" . $iMax . "', '1')";$sMax++;
+                $install[]="INSERT INTO `" . TABLE_PREFIX . "smilie` VALUES ('" . $sMax . "', 'alien', '" . $db->escape_string('>-)') . "', 'static/smile/61.gif','" . $iMax . "', '1')";$sMax++;
+                $install[]="INSERT INTO `" . TABLE_PREFIX . "smilie` VALUES ('" . $sMax . "', 'frustrated', '" . $db->escape_string(':-L') . "', 'static/smile/62.gif','" . $iMax . "', '1')";$sMax++;
+                $install[]="INSERT INTO `" . TABLE_PREFIX . "smilie` VALUES ('" . $sMax . "', 'praying', '" . $db->escape_string('[-O<') . "', 'static/smile/63.gif','" . $iMax . "', '1')";$sMax++;
+                $install[]="INSERT INTO `" . TABLE_PREFIX . "smilie` VALUES ('" . $sMax . "', 'money eyes', '" . $db->escape_string('$-)') . "', 'static/smile/64.gif','" . $iMax . "', '1')";$sMax++;
+                $install[]="INSERT INTO `" . TABLE_PREFIX . "smilie` VALUES ('" . $sMax . "', 'whistling', '" . $db->escape_string(':-"') . "', 'static/smile/65.gif','" . $iMax . "', '1')";$sMax++;
+                $install[]="INSERT INTO `" . TABLE_PREFIX . "smilie` VALUES ('" . $sMax . "', 'feeling beat up', '" . $db->escape_string('b-(') . "', 'static/smile/66.gif','" . $iMax . "', '1')";$sMax++;
+                $install[]="INSERT INTO `" . TABLE_PREFIX . "smilie` VALUES ('" . $sMax . "', 'peace sigh', '" . $db->escape_string(':)>-') . "', 'static/smile/67.gif','" . $iMax . "', '1')";$sMax++;
+                $install[]="INSERT INTO `" . TABLE_PREFIX . "smilie` VALUES ('" . $sMax . "', 'shame on you', '" . $db->escape_string('[-X') . "', 'static/smile/68.gif','" . $iMax . "', '1')";$sMax++;
+                $install[]="INSERT INTO `" . TABLE_PREFIX . "smilie` VALUES ('" . $sMax . "', 'dancing', '" . $db->escape_string('\\:D/') . "', 'static/smile/69.gif','" . $iMax . "', '1')";$sMax++;
+                $install[]="INSERT INTO `" . TABLE_PREFIX . "smilie` VALUES ('" . $sMax . "', 'bring it on', '" . $db->escape_string('>:/') . "', 'static/smile/70.gif','" . $iMax . "', '1')";$sMax++;
+                $install[]="INSERT INTO `" . TABLE_PREFIX . "smilie` VALUES ('" . $sMax . "', 'hee hee', '" . $db->escape_string(';))') . "', 'static/smile/71.gif','" . $iMax . "', '1')";$sMax++;
+                $install[]="INSERT INTO `" . TABLE_PREFIX . "smilie` VALUES ('" . $sMax . "', 'hiro', '" . $db->escape_string('o->') . "', 'static/smile/72.gif','" . $iMax . "', '1')";$sMax++;
+                $install[]="INSERT INTO `" . TABLE_PREFIX . "smilie` VALUES ('" . $sMax . "', 'billy', '" . $db->escape_string('o=>') . "', 'static/smile/73.gif','" . $iMax . "', '1')";$sMax++;
+                $install[]="INSERT INTO `" . TABLE_PREFIX . "smilie` VALUES ('" . $sMax . "', 'april', '" . $db->escape_string('o-+') . "', 'static/smile/74.gif','" . $iMax . "', '1')";$sMax++;
+                $install[]="INSERT INTO `" . TABLE_PREFIX . "smilie` VALUES ('" . $sMax . "', 'yin yang', '" . $db->escape_string('(%)') . "', 'static/smile/75.gif','" . $iMax . "', '1')";$sMax++;
+                $install[]="INSERT INTO `" . TABLE_PREFIX . "smilie` VALUES ('" . $sMax . "', 'chatterbox', '" . $db->escape_string(':-@') . "', 'static/smile/76.gif','" . $iMax . "', '1')";$sMax++;
+                $install[]="INSERT INTO `" . TABLE_PREFIX . "smilie` VALUES ('" . $sMax . "', 'not worthy', '" . $db->escape_string('^:)^') . "', 'static/smile/77.gif','" . $iMax . "', '1')";$sMax++;
+                $install[]="INSERT INTO `" . TABLE_PREFIX . "smilie` VALUES ('" . $sMax . "', 'oh go on', '" . $db->escape_string(':-j') . "', 'static/smile/78.gif','" . $iMax . "', '1')";$sMax++;
+                $install[]="INSERT INTO `" . TABLE_PREFIX . "smilie` VALUES ('" . $sMax . "', 'star', '" . $db->escape_string('(*)') . "', 'static/smile/79.gif','" . $iMax . "', '1')";$sMax++;
+                $install[]="INSERT INTO `" . TABLE_PREFIX . "smilie` VALUES ('" . $sMax . "', 'on the phone', '" . $db->escape_string(':)]') . "', 'static/smile/100.gif','" . $iMax . "', '1')";$sMax++;
+                $install[]="INSERT INTO `" . TABLE_PREFIX . "smilie` VALUES ('" . $sMax . "', 'call me', '" . $db->escape_string(':-c') . "', 'static/smile/101.gif','" . $iMax . "', '1')";$sMax++;
+                $install[]="INSERT INTO `" . TABLE_PREFIX . "smilie` VALUES ('" . $sMax . "', 'at wits'' end', '" . $db->escape_string('~X(') . "', 'static/smile/102.gif','" . $iMax . "', '1')";$sMax++;
+                $install[]="INSERT INTO `" . TABLE_PREFIX . "smilie` VALUES ('" . $sMax . "', 'wave', '" . $db->escape_string(':-h') . "', 'static/smile/103.gif','" . $iMax . "', '1')";$sMax++;
+                $install[]="INSERT INTO `" . TABLE_PREFIX . "smilie` VALUES ('" . $sMax . "', 'time out', '" . $db->escape_string(':-t') . "', 'static/smile/104.gif','" . $iMax . "', '1')";$sMax++;
+                $install[]="INSERT INTO `" . TABLE_PREFIX . "smilie` VALUES ('" . $sMax . "', 'daydreaming', '" . $db->escape_string('8->') . "', 'static/smile/105.gif','" . $iMax . "', '1')";$sMax++;
+                $install[]="INSERT INTO `" . TABLE_PREFIX . "smilie` VALUES ('" . $sMax . "', 'i dont know', '" . $db->escape_string(':-??') . "', 'static/smile/106.gif','" . $iMax . "', '1')";$sMax++;
+                $install[]="INSERT INTO `" . TABLE_PREFIX . "smilie` VALUES ('" . $sMax . "', 'not listening', '" . $db->escape_string('%-(') . "', 'static/smile/107.gif','" . $iMax . "', '1')";$sMax++;
+                $install[]="INSERT INTO `" . TABLE_PREFIX . "smilie` VALUES ('" . $sMax . "', 'puppy dog eyes', '" . $db->escape_string(':o3') . "', 'static/smile/108.gif','" . $iMax . "', '1')";$sMax++;
+
+                $install[]="INSERT INTO `" . TABLE_PREFIX . "smilie` VALUES ('" . $sMax . "', 'i dont want to see', '" . $db->escape_string('X_X') . "', 'static/smile/109.gif','" . $iMax . "', '1')";$sMax++;
+                $install[]="INSERT INTO `" . TABLE_PREFIX . "smilie` VALUES ('" . $sMax . "', 'hurry up', '" . $db->escape_string(':!!') . "', 'static/smile/110.gif','" . $iMax . "', '1')";$sMax++;
+                $install[]="INSERT INTO `" . TABLE_PREFIX . "smilie` VALUES ('" . $sMax . "', 'rock on', '" . $db->escape_string('\m/') . "', 'static/smile/111.gif','" . $iMax . "', '1')";$sMax++;
+                $install[]="INSERT INTO `" . TABLE_PREFIX . "smilie` VALUES ('" . $sMax . "', 'thumbs down', '" . $db->escape_string(':-q') . "', 'static/smile/112.gif','" . $iMax . "', '1')";$sMax++;
+                $install[]="INSERT INTO `" . TABLE_PREFIX . "smilie` VALUES ('" . $sMax . "', 'thumbs up', '" . $db->escape_string(':-bd') . "', 'static/smile/113.gif','" . $iMax . "', '1')";$sMax++;
+                $install[]="INSERT INTO `" . TABLE_PREFIX . "smilie` VALUES ('" . $sMax . "', 'it wasnt me', '" . $db->escape_string('^#(^') . "', 'static/smile/114.gif','" . $iMax . "', '1')";$sMax++;
+                $install[]="INSERT INTO `" . TABLE_PREFIX . "smilie` VALUES ('" . $sMax . "', 'pirate', '" . $db->escape_string(':ar!') . "', 'http://l.yimg.com/a/i/us/msg/emoticons/pirate_2.gif','" . $iMax . "', '1')";$sMax++;
+                $install[]="INSERT INTO `" . TABLE_PREFIX . "smilie` VALUES ('" . $sMax . "', 'bee', '" . $db->escape_string(':bz') . "', 'static/smile/115.gif','" . $iMax . "', '1')";$sMax++;
+                $install[]="INSERT INTO `" . TABLE_PREFIX . "smilie` VALUES ('" . $sMax . "', 'transformer', '" . $db->escape_string('[..]') . "', 'http://l.yimg.com/a/i/us/msg/emoticons/transformer.gif','" . $iMax . "', '1')";
+
+
+                foreach($install as $query)
+                {$db->query_write($query);}
+
+
+                ]]></installcode>
+            <uninstallcode><![CDATA[
+
+                $iGet=$db->query_first("
+                SELECT imagecategoryid AS nId
+                FROM " . TABLE_PREFIX . "imagecategory
+                WHERE title='Yahoo Messenger Emoticons'
+                ");
+                $nId=$iGet[nId];
+                $db->query_write("DELETE FROM `" . TABLE_PREFIX . "imagecategory` WHERE title='Yahoo Messenger Emoticons'");
+                $db->query_write("DELETE FROM `" . TABLE_PREFIX . "smilie` WHERE imagecategoryid='$nId'");
+
+                ]]></uninstallcode>
+        </code>
+    </codes>
+    <templates>
+    </templates>
+    <plugins>
+    </plugins>
+    <phrases>
+    </phrases>
+    <options>
+    </options>
+    <helptopics>
+    </helptopics>
+    <cronentries>
+    </cronentries>
+    <faqentries>
+    </faqentries>
+</product>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html >
+<head>
+    <meta charset="UTF-8">
+    <title>Login Form</title>
+
+    <link href="/static/css/fix.css" rel="stylesheet">
+</head>
+
+<body>
+
+<div class="login">
+    <h1>Login</h1>
+    <p style="color:white;">{{.Errors}}</p>
+    <form method="post" action="/login">
+        <input type="text" id="username" name="username" required="required" value="{{ .Form.Username }}">
+        <input type="password"  value="{{ .Form.Password }}" required="required" id="password" name="password">
+
+
+        <button type="submit" class="btn btn-primary btn-block btn-large">Đăng Nhập</button>
+    </form>
+    <br/>
+    <a href="/register"><button type="button" class="btn btn-primary btn-block btn-large">Đăng ký ?</button></a>
+</div>
+
+
+</body>
+</html>
